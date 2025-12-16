@@ -1,5 +1,21 @@
-import { Phone, Snowflake } from "lucide-react";
+import { Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+
+import shop1 from "@/assets/shop1.jpg";
+import shop2 from "@/assets/shop2.jpg";
+import shop3 from "@/assets/shop3.jpg";
+import shop4 from "@/assets/shop4.jpg";
+import shop5 from "@/assets/shop5.jpg";
+
+const shopImages = [
+  { src: shop1, alt: "หน้าร้านยิ่งเจริญแอร์ - พัดลม" },
+  { src: shop2, alt: "สินค้าไฟฟ้าหลากหลาย" },
+  { src: shop3, alt: "เครื่องใช้ไฟฟ้าในครัว" },
+  { src: shop4, alt: "อุปกรณ์เครื่องเสียง" },
+  { src: shop5, alt: "อุปกรณ์ไฟฟ้าและสายไฟ" },
+];
 
 const Hero = () => {
   return (
@@ -34,20 +50,48 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right Content - Decorative */}
+          {/* Right Content - Image Carousel */}
           <div className="relative animate-slide-in-right hidden lg:block">
-            <div className="relative">
-              <div className="w-80 h-80 mx-auto bg-primary/10 rounded-full flex items-center justify-center">
-                <div className="w-64 h-64 bg-primary/20 rounded-full flex items-center justify-center animate-float">
-                  <Snowflake className="w-32 h-32 text-primary" />
-                </div>
-              </div>
-              {/* Floating elements */}
-              <div className="absolute top-10 right-10 w-12 h-12 bg-sky-medium rounded-full flex items-center justify-center animate-float" style={{ animationDelay: "0.5s" }}>
-                <Snowflake className="w-6 h-6 text-primary" />
-              </div>
-              <div className="absolute bottom-20 left-0 w-16 h-16 bg-sky-light rounded-full flex items-center justify-center animate-float" style={{ animationDelay: "1s" }}>
-                <Snowflake className="w-8 h-8 text-primary" />
+            <div className="relative w-full max-w-md mx-auto">
+              <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-sky-medium/30 rounded-2xl blur-xl"></div>
+              <Carousel
+                opts={{
+                  align: "start",
+                  loop: true,
+                }}
+                plugins={[
+                  Autoplay({
+                    delay: 3000,
+                    stopOnInteraction: false,
+                  }),
+                ]}
+                className="relative rounded-xl overflow-hidden shadow-2xl border-4 border-background/50"
+              >
+                <CarouselContent>
+                  {shopImages.map((image, index) => (
+                    <CarouselItem key={index}>
+                      <div className="aspect-[4/3] overflow-hidden">
+                        <img
+                          src={image.src}
+                          alt={image.alt}
+                          className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                        />
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="left-2 bg-background/80 hover:bg-background" />
+                <CarouselNext className="right-2 bg-background/80 hover:bg-background" />
+              </Carousel>
+              {/* Decorative dots */}
+              <div className="flex justify-center gap-2 mt-4">
+                {shopImages.map((_, index) => (
+                  <div
+                    key={index}
+                    className="w-2 h-2 rounded-full bg-primary/40 animate-pulse"
+                    style={{ animationDelay: `${index * 0.2}s` }}
+                  />
+                ))}
               </div>
             </div>
           </div>
