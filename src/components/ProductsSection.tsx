@@ -1,8 +1,14 @@
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
 import { Link } from "react-router-dom";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 import productAir from "@/assets/product-air.jpg";
 import productCctv from "@/assets/product-cctv.jpg";
@@ -49,23 +55,6 @@ const products = [
 ];
 
 const ProductsSection = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const itemsPerView = 3;
-
-  const nextSlide = () => {
-    setCurrentIndex((prev) => 
-      prev + itemsPerView >= products.length ? 0 : prev + 1
-    );
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prev) => 
-      prev === 0 ? Math.max(0, products.length - itemsPerView) : prev - 1
-    );
-  };
-
-  const visibleProducts = products.slice(currentIndex, currentIndex + itemsPerView);
-
   return (
     <section id="products" className="py-16 gradient-hero">
       <div className="container mx-auto px-4">
@@ -73,56 +62,55 @@ const ProductsSection = () => {
           ตัวอย่างสินค้า
         </h2>
 
-        <div className="relative">
-          {/* Navigation Buttons */}
-          <button 
-            onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-10 h-10 bg-card rounded-full shadow-lg flex items-center justify-center hover:bg-secondary transition-colors"
+        <div className="relative px-12">
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            plugins={[
+              Autoplay({
+                delay: 3000,
+                stopOnInteraction: false,
+              }),
+            ]}
+            className="w-full"
           >
-            <ChevronLeft className="w-5 h-5 text-foreground" />
-          </button>
-          
-          <button 
-            onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-10 h-10 bg-card rounded-full shadow-lg flex items-center justify-center hover:bg-secondary transition-colors"
-          >
-            <ChevronRight className="w-5 h-5 text-foreground" />
-          </button>
-
-          {/* Products Grid */}
-          <div className="grid md:grid-cols-3 gap-6 px-8">
-            {visibleProducts.map((product) => (
-              <Card 
-                key={product.id} 
-                className="border border-border hover:shadow-lg transition-all duration-300 overflow-hidden group"
-              >
-                <CardHeader className="p-0">
-                  <div className="h-48 overflow-hidden">
-                    <img 
-                      src={product.image} 
-                      alt={product.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                </CardHeader>
-                <CardContent className="text-center pt-4">
-                  <h3 className="text-lg font-semibold text-foreground mb-2">
-                    {product.title}
-                  </h3>
-                  <p className="text-muted-foreground text-sm">
-                    {product.description}
-                  </p>
-                </CardContent>
-                <CardFooter className="justify-center">
-                  <Link to={`/product/${product.slug}`}>
-                    <Button variant="outline" size="sm">
-                      ดูรายละเอียด
-                    </Button>
-                  </Link>
-                </CardFooter>
-              </Card>
-            ))}
-          </div>
+            <CarouselContent className="-ml-4">
+              {products.map((product) => (
+                <CarouselItem key={product.id} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                  <Card className="border border-border hover:shadow-lg transition-all duration-300 overflow-hidden group h-full">
+                    <CardHeader className="p-0">
+                      <div className="h-48 overflow-hidden">
+                        <img 
+                          src={product.image} 
+                          alt={product.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                    </CardHeader>
+                    <CardContent className="text-center pt-4">
+                      <h3 className="text-lg font-semibold text-foreground mb-2">
+                        {product.title}
+                      </h3>
+                      <p className="text-muted-foreground text-sm">
+                        {product.description}
+                      </p>
+                    </CardContent>
+                    <CardFooter className="justify-center">
+                      <Link to={`/product/${product.slug}`}>
+                        <Button variant="outline" size="sm">
+                          ดูรายละเอียด
+                        </Button>
+                      </Link>
+                    </CardFooter>
+                  </Card>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="left-0" />
+            <CarouselNext className="right-0" />
+          </Carousel>
         </div>
       </div>
     </section>
