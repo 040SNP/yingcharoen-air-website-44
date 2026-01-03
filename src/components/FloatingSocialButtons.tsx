@@ -5,7 +5,7 @@ const FloatingSocialButtons = () => {
     <div className="fixed right-4 bottom-20 z-50 flex flex-col gap-3">
       {/* LINE Button */}
       <a
-        href="https://line.me/ti/p/YOUR_LINE_ID"
+        href="https://line.me/ti/p/0959530570"
         target="_blank"
         rel="noopener noreferrer"
         className="w-14 h-14 bg-[#00B900] rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300 hover:shadow-xl group"
@@ -21,7 +21,7 @@ const FloatingSocialButtons = () => {
 
       {/* Messenger Button */}
       <a
-        href="https://m.me/YOUR_PAGE_ID"
+        href="https://www.facebook.com/messages/t/100063513489498"
         target="_blank"
         rel="noopener noreferrer"
         className="w-14 h-14 bg-gradient-to-br from-[#00B2FF] to-[#006AFF] rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300 hover:shadow-xl group"
