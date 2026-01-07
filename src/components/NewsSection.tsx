@@ -4,24 +4,32 @@ import { ExternalLink } from "lucide-react";
 import news1 from "@/assets/news1.png";
 import news2 from "@/assets/news2.jpg";
 import news3 from "@/assets/news3-new.jpg";
+import promoPanasonic from "@/assets/promo-panasonic.png";
 
 const newsItems = [
   {
     id: 1,
+    title: "โปรส่งท้ายปี เครื่องทำน้ำอุ่น Panasonic 4500W",
+    description: "เครื่องทำน้ำอุ่น Panasonic รุ่น DH-4VL1TW ราคาพิเศษเหลือเพียง 3,250 บาท (จากปกติ 3,990 บาท) รับประกัน 5 ปี",
+    image: promoPanasonic,
+    link: "https://www.facebook.com/share/p/1ATJihGLP9/",
+  },
+  {
+    id: 2,
     title: "ติดตั้งแอร์ Daikin Inverter",
     description: "บริการติดตั้งแอร์ Daikin Inverter R32 ประหยัดไฟ พร้อมรับประกันงานติดตั้ง",
     image: news1,
     link: "https://www.facebook.com/share/p/1ADBtTGk9S/",
   },
   {
-    id: 2,
+    id: 3,
     title: "โปรโมชั่นเครื่องทำน้ำอุ่น TURBORA",
     description: "เครื่องทำน้ำอุ่น TURBORA ราคาพิเศษเพียง 1,990 บาท พร้อมติดตั้ง",
     image: news2,
     link: "https://www.facebook.com/share/p/1DGDfuacdT/",
   },
   {
-    id: 3,
+    id: 4,
     title: "สายไฟ BCC THW 2.5 SQ.MM ราคาพิเศษ",
     description: "สายไฟ BCC THW 2.5 SQ.MM (30 ม.) คุณภาพดี มาตรฐาน มอก.",
     image: news3,
