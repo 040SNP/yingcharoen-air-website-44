@@ -21,7 +21,7 @@ const Header = () => {
           <a href="#home" className="flex items-center gap-2">
             <img src={logo} alt="YJ Service Logo" className="h-12 w-auto" />
             <span className="font-semibold text-lg text-foreground">
-              ร้านยิ่งเจริญแอร์ วังชิ้น
+              ร้านยิ่งเจริญไฟฟ้า&แอร์ เซอร์วิส
             </span>
           </a>
 
