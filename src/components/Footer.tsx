@@ -77,7 +77,7 @@ const Footer = () => {
                   <div>
                     <p className="font-medium">Line:</p>
                     <a 
-                      href="https://line.me/ti/p/0959530570" 
+                      href="https://line.me/R/ti/p/~0959530570"
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="text-primary hover:underline"
